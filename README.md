@@ -1,2 +1,4 @@
-# react-redux-seed
-Projeto seed de react redux
+dependencias globais:
+
+npm install webpack -g
+npm install webpack-dev-server -g
