@@ -4,8 +4,8 @@
   "description": "ajudai_web",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
-    "dev": "webpack-dev-server --open"
+    "build": "webpack --config webpack.prod.js --progress --profile --colors",
+    "dev": "webpack-dev-server --config webpack.dev.js --open"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,8 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-merge": "^2.4.0",
+    "webpack-uglify-js-plugin": "^1.1.9"
   }
 }

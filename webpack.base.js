@@ -11,10 +11,10 @@ module.exports = {
     path: './release'
   },
   plugins: [
-        new CopyWebpackPlugin([
-          {context: './src/static', from: '**/*', to: './'}, //copy all static files to release
-        ]),
-        extractLESS
+    new CopyWebpackPlugin([
+      {context: './src/static', from: '**/*', to: './'}, //copy all static files to release
+    ]),
+    extractLESS
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -42,10 +42,5 @@ module.exports = {
         loader: 'file-loader?name=img/[name].[ext]'
       }
     ]
-  },
-
-  devServer: {
-    historyApiFallback: true,
   }
-
 }
