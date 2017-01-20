@@ -4,6 +4,8 @@ import { Router, Route, browserHistory } from 'react-router';
 import Home from './Home';
 import Test from './Test';
 
+import css from './../style/main.less';
+
 const App = ({ store }) => (
   <Provider store={store}>
     <Router history={browserHistory}>

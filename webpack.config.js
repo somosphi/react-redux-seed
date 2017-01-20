@@ -31,7 +31,15 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: extractLESS.extract(['css','less'])
+        loader: extractLESS.extract(['css','less'], { publicPath: '/' })
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'url-loader?limit=30000&name=img/[name].[ext]'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'file-loader?name=img/[name].[ext]'
       }
     ]
   },
