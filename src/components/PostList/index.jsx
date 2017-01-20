@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 
-import Post from './Post';
+import css from './style.less';
+
+import Post from './../Post';
 /*
 posts: um array de objetos do tipo {id(number), title(string)}
 */
@@ -21,7 +23,7 @@ const PostList = (function({data}) {
   }
 
   return (
-    <div>
+    <div className="post-list">
       Is Fetching: {isFetching}
       <ul>{postComponents}</ul>
     </div>

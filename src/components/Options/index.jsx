@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import css from './style.less';
 
 class Options extends React.Component {
 
@@ -37,7 +38,7 @@ class Options extends React.Component {
   render() {
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="options">
         Adicionar: <input name="addSubreddit" type="text" value={this.state.form.addSubreddit} onChange={this.onFormChange} />
 
         <select onChange={this.onChangeSubreddit} value={this.props.selectedSubreddit}>

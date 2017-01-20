@@ -1,4 +1,6 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+let extractLESS = new ExtractTextPlugin('css/main.css');
 
 module.exports = {
   entry: {
@@ -11,7 +13,8 @@ module.exports = {
   plugins: [
         new CopyWebpackPlugin([
           {context: './src/static', from: '**/*', to: './'}, //copy all static files to release
-        ])
+        ]),
+        extractLESS
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -24,8 +27,11 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015']
-        },
-
+        }
+      },
+      {
+        test: /\.less$/,
+        loader: extractLESS.extract(['css','less'])
       }
     ]
   },
