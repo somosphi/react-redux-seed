@@ -1,5 +1,8 @@
 const merge = require('webpack-merge');
 const base = require('./webpack.base.js');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+let extractLESS = new ExtractTextPlugin('css/main.css');
 
 const dev = {
   devServer: {
@@ -10,6 +13,17 @@ const dev = {
 
     // Display only errors to reduce the amount of output.
     stats: 'errors-only'
+  },
+  plugins: [
+    extractLESS
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.less$/,
+        loader: extractLESS.extract(['css','less'], { publicPath: '/' })
+      }
+    ]
   }
 };
 

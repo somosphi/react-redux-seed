@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+  <head>
+
+    <% for (var i = 0; i < htmlWebpackPlugin.files.css.length; i++) { %>
+      <link rel="stylesheet" type="text/css" media="screen" href="<%= htmlWebpackPlugin.files.css[i] %>" />
+    <% } %>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="initial-loader"></div>
+    </div>
+
+    <% for (var i = 0; i < htmlWebpackPlugin.files.js.length; i++) { %>
+      <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+    <% } %>
+
+  </body>
+
+</html>

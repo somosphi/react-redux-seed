@@ -1,6 +1,5 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-let extractLESS = new ExtractTextPlugin('css/main.css');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -14,7 +13,10 @@ module.exports = {
     new CopyWebpackPlugin([
       {context: './src/static', from: '**/*', to: './'}, //copy all static files to release
     ]),
-    extractLESS
+    new HtmlWebpackPlugin({
+      template: 'src/html/index.ejs',
+      inject: false
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -28,10 +30,6 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         }
-      },
-      {
-        test: /\.less$/,
-        loader: extractLESS.extract(['css','less'], { publicPath: '/' })
       },
       {
         test: /\.(jpg|png|gif)$/,
