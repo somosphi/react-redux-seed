@@ -1,8 +1,8 @@
 const merge = require('webpack-merge');
 const base = require('./webpack.base.js');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-let extractLESS = new ExtractTextPlugin('css/main.css');
+const extractLESS = new ExtractTextPlugin('css/main.css');
 
 const dev = {
   devServer: {
@@ -12,19 +12,19 @@ const dev = {
     historyApiFallback: true,
 
     // Display only errors to reduce the amount of output.
-    stats: 'errors-only'
+    stats: 'errors-only',
   },
   plugins: [
-    extractLESS
+    extractLESS,
   ],
   module: {
     loaders: [
       {
         test: /\.less$/,
-        loader: extractLESS.extract(['css','less'], { publicPath: '/' })
-      }
-    ]
-  }
+        loader: extractLESS.extract(['css', 'less'], { publicPath: '/' }),
+      },
+    ],
+  },
 };
 
 module.exports = merge([base, dev]);

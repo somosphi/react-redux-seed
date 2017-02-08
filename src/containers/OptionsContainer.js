@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Options from '../components/Options';
-import {selectSubreddit, addSubreddit, fetchPosts} from '../actions';
+import { selectSubreddit, addSubreddit, fetchPosts } from '../actions';
 
 
 function mapStateToProps(state) {
   return {
     subreddits: state.subreddits,
-    selectedSubreddit: state.selectedSubreddit
-  }
+    selectedSubreddit: state.selectedSubreddit,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
 
 const OptionsContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Options)
 
 export default OptionsContainer

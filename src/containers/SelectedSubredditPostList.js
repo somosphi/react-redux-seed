@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PostList from '../components/PostList';
 
 function getPostsBySubreddit(selectedSubreddit, postsBySubreddit) {
-    return postsBySubreddit[selectedSubreddit];
+  return postsBySubreddit[selectedSubreddit];
 }
 
 function mapStateToProps(state) {
@@ -17,7 +17,7 @@ function mapDispatchToProps(dispatch) {
 
 const SelectedSubredditPostList = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(PostList)
 
 export default SelectedSubredditPostList

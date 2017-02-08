@@ -9,17 +9,17 @@
 */
 
 import { combineReducers } from 'redux';
-import postsBySubreddit from './postsBySubreddit.js';
-import selectedSubreddit from './selectedSubreddit.js';
-import subreddits from './subreddits.js';
-import errors from './errors.js';
+import postsBySubreddit from './postsBySubreddit';
+import selectedSubreddit from './selectedSubreddit';
+import subreddits from './subreddits';
+import errors from './errors';
 
 
 const rootReducer = combineReducers({
   postsBySubreddit,
   selectedSubreddit,
   subreddits,
-  errors
-})
+  errors,
+});
 
-export default rootReducer
+export default rootReducer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import thunkMiddleware from 'redux-thunk';
-import { render } from 'react-dom'
+import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import App from './components/App';

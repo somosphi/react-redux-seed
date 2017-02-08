@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 
 
-const Post = function({title}) {
+const Post = ({ title }) => {
   return (<li>{title}</li>);
 };
 
 
 Post.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 

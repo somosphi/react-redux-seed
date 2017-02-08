@@ -1,4 +1,9 @@
-dependencias globais:
+# React Redux seed
 
-npm install webpack -g
-npm install webpack-dev-server -g
+### dependencias globais:
+```
+npm install webpack webpack-dev-server -g
+```
+```
+npm install eslint -g
+```

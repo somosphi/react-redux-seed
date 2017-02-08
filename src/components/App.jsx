@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import Home from './Home';
 import Test from './Test';
-
-import css from './../style/main.less';
+import './../style/main.less';
 
 const App = ({ store }) => (
   <Provider store={store}>

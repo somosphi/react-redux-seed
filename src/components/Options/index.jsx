@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import css from './style.less';
+import './style.less';
 
 class Options extends React.Component {
 
@@ -7,11 +7,11 @@ class Options extends React.Component {
     super(props);
     this.state = {
       form: {
-        addSubreddit: ''
-      }
+        addSubreddit: '',
+      },
     };
 
-    //NO SENSE, BUT NEEDED FOR EVERY CLASS METHOD CALLED IN RENDER!
+    // NO SENSE, BUT NEEDED FOR EVERY CLASS METHOD CALLED IN RENDER!
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeSubreddit = this.onChangeSubreddit.bind(this);
     this.onFormChange = this.onFormChange.bind(this);
@@ -28,25 +28,24 @@ class Options extends React.Component {
   }
 
   onFormChange(e) {
-    var newForm = Object.assign({}, this.state.form);
+    let newForm = Object.assign({}, this.state.form);
     newForm[e.target.name] = e.target.value;
 
-    var newState = Object.assign({}, this.state, {form: newForm});
+    const newState = Object.assign({}, this.state, { form: newForm });
     this.setState(newState);
   }
 
   render() {
-
     return (
       <form onSubmit={this.onSubmit} className="options">
         Adicionar: <input name="addSubreddit" type="text" value={this.state.form.addSubreddit} onChange={this.onFormChange} />
 
         <select onChange={this.onChangeSubreddit} value={this.props.selectedSubreddit}>
           {
-            this.props.subreddits.map(subreddit => {
+            this.props.subreddits.map((subreddit) => {
               return (
                 <option key={subreddit} value={subreddit}>{subreddit}</option>
-              )
+              );
             })
           }
         </select>
@@ -60,8 +59,8 @@ class Options extends React.Component {
 Options.propTypes = {
   onAddSubreddit: PropTypes.func.isRequired,
   onChangeSubreddit: PropTypes.func.isRequired,
-  subreddits: PropTypes.arrayOf(PropTypes.string),
-  selectedSubreddit: PropTypes.string.isRequired
+  subreddits: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedSubreddit: PropTypes.string.isRequired,
 };
 
 

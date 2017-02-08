@@ -1,3 +1,3 @@
 export default {
-  ajudaiApiEndpoint: 'ajudai.org/api'
+  ajudaiApiEndpoint: 'ajudai.org/api',
 };

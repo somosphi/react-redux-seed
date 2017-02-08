@@ -1,19 +1,19 @@
 import { Link } from 'react-router';
 import React, { PropTypes } from 'react';
 
-const Test = function({title}) {
+const Test = ({ title }) => {
   return (
     <div>
       <p>Test Page</p>
       <p>
-        <Link to=''/>
+        <Link to="#" />
       </p>
     </div>);
 };
 
 
 Test.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 

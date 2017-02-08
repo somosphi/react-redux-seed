@@ -25,10 +25,45 @@ STATE SHAPE:
 }
 */
 
+import { INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, RECEIVE_API_ERROR } from '../actions';
 
-import {
-  INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, RECEIVE_API_ERROR
-} from '../actions';
+
+function posts(state = {
+  isFetching: false,
+  didInvalidate: false,
+  items: [],
+}, action) {
+  switch (action.type) {
+    case INVALIDATE_SUBREDDIT:
+      return Object.assign({}, state, {
+        didInvalidate: true,
+      });
+    case REQUEST_POSTS:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false,
+        errorMessage: null,
+      });
+    case RECEIVE_POSTS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        errorMessage: null,
+        items: action.posts,
+        lastUpdated: action.receivedAt,
+      });
+    case RECEIVE_API_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        errorMessage: action.errorMessage,
+        items: [],
+        lastUpdated: null,
+      });
+    default:
+      return state;
+  }
+}
 
 export default function postsBySubreddit(state = {}, action) {
   switch (action.type) {
@@ -38,43 +73,6 @@ export default function postsBySubreddit(state = {}, action) {
     case RECEIVE_API_ERROR:
       return Object.assign({}, state, {
         [action.subreddit]: posts(state[action.subreddit], action)
-      });
-    default:
-      return state;
-  }
-}
-
-function posts(state = {
-  isFetching: false,
-  didInvalidate: false,
-  items: []
-}, action) {
-  switch (action.type) {
-    case INVALIDATE_SUBREDDIT:
-      return Object.assign({}, state, {
-        didInvalidate: true
-      });
-    case REQUEST_POSTS:
-      return Object.assign({}, state, {
-        isFetching: true,
-        didInvalidate: false,
-        errorMessage: null
-      });
-    case RECEIVE_POSTS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        errorMessage: null,
-        items: action.posts,
-        lastUpdated: action.receivedAt
-      });
-    case RECEIVE_API_ERROR:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        errorMessage: action.errorMessage,
-        items: [],
-        lastUpdated: null
       });
     default:
       return state;
