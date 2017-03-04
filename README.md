@@ -7,3 +7,10 @@ npm install webpack webpack-dev-server -g
 ```
 npm install eslint -g
 ```
+
+ou
+
+```
+npm run globals
+```
+
