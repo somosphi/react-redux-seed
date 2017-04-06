@@ -1,5 +1,6 @@
-/release/*
+release
 .DS_Store
 node_modules
-npm-debug.log
 cached_uglify
+*.log
+*.bak
