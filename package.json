@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -p --config build.js --colors",
-    "dev": "webpack-dev-server --config dev.js --hot --colors --open"
+    "dev": "webpack-dev-server --config dev.js --hot --colors --open",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,7 @@
   "author": "4all Tecnologia",
   "license": "ISC",
   "devDependencies": {
+    "ava": "^0.19.1",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
     "babel-preset-es2015": "^6.22.0",
