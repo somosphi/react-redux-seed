@@ -13,7 +13,7 @@ const PostList = (({ data }) => {
       const postInfo = {
         permalink: post.permalink,
         title: post.title,
-        thumbnail: post.thumbnail,
+        thumbnail: (post.thumbnail === 'default' || post.thumbnail === 'self') ? '/img/default.jpg' : post.thumbnail,
       };
 
       return (<Post key={post.id} postInfo={postInfo} />);
