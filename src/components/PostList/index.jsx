@@ -27,7 +27,7 @@ const PostList = (({ data }) => {
 
   return (
     <div className="post-list">
-      Is Fetching: {isFetching}
+      Is Fetching: {isFetching} <img className={!data.isFetching ? 'hidden' : 'loader'} src="/img/loading.gif" />
       <ul>{postComponents}</ul>
     </div>
   );

@@ -57,6 +57,7 @@ class Options extends React.Component {
           </div>
         </div>
         <div className="form-group">
+          <label>Selecione o subreddit para carregar os posts:</label>
           <select
             className="form-control"
             onChange={this.onChangeSubreddit}

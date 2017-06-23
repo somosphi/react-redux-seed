@@ -7,39 +7,31 @@ body{
   >div{
     display: inline-block;
     margin-right: 15px;
-    box-shadow: 1px 2px 2px #CCC;
+    box-shadow: 2px 2px 2px #CCC;
     padding: 5px;
     border-radius:2px;
     font-size: 10px;
   }
-  .small-img {
-    width: 24px;
-    height: 30px;
-    background-image: url('../static/img/logo.svg');
+  .small-img, .big-img, .svg-img{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
   }
-
+  .small-img {
+    width: 25px;
+    height: 30px;
+    background-image: url('../static/img/logo.svg');
+  }
   .big-img {
     width: 100px;
     height: 100px;
     background-image: url('../static/img/1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 10px;
   }
-
   .svg-img {
     width: 50px;
     height: 50px;
     background-image: url('../static/img/loader.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 10px;
   }
 }
 ul{
