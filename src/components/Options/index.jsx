@@ -21,6 +21,11 @@ class Options extends React.Component {
     e.preventDefault();
 
     this.props.onAddSubreddit(this.state.form.addSubreddit);
+    this.setState({
+      form: {
+        addSubreddit: '',
+      },
+    });
   }
 
   onChangeSubreddit(e) {
