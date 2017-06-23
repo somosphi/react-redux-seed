@@ -5,7 +5,7 @@ STATE SHAPE:
 
 import { SELECT_SUBREDDIT } from '../actions';
 
-export default function selectedSubreddit(state = 'reactjs', action) {
+export default function selectedSubreddit(state = 'Selecione...', action) {
   switch (action.type) {
     case SELECT_SUBREDDIT:
       return action.subreddit;
