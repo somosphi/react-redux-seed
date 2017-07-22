@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Options from '../components/Options';
+import Options from '../components/Options/index.jsx';
 import { selectSubreddit, addSubreddit, fetchPosts } from '../actions';
 
 
@@ -18,13 +18,10 @@ function mapDispatchToProps(dispatch) {
     onChangeSubreddit: (subreddit) => {
       dispatch(selectSubreddit(subreddit));
       dispatch(fetchPosts(subreddit));
-    }
-  }
+    },
+  };
 }
 
-const OptionsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Options)
+const OptionsContainer = connect(mapStateToProps, mapDispatchToProps)(Options);
 
-export default OptionsContainer
+export default OptionsContainer;

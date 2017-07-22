@@ -1,20 +1,12 @@
-import { Link } from 'react-router';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import Navbar from './Navbar.jsx';
 
-const Test = ({ title }) => {
+const Test = () => {
   return (
-    <div>
+    <div className="container-fluid">
+      <Navbar />
       <p>Test Page</p>
-      <p>
-        <Link to="#" />
-      </p>
     </div>);
 };
-
-
-Test.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
 
 export default Test;

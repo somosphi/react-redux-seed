@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
-import Home from './Home';
-import Test from './Test';
+import Home from './Home.jsx';
+import Test from './Test.jsx';
 import './../style/main.less';
 
 const App = ({ store }) => (

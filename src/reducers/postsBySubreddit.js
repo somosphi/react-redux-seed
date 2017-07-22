@@ -72,7 +72,7 @@ export default function postsBySubreddit(state = {}, action) {
     case REQUEST_POSTS:
     case RECEIVE_API_ERROR:
       return Object.assign({}, state, {
-        [action.subreddit]: posts(state[action.subreddit], action)
+        [action.subreddit]: posts(state[action.subreddit], action),
       });
     default:
       return state;
