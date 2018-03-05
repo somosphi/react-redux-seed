@@ -44,8 +44,8 @@ const config = {
   optimization: {
     splitChunks: {
       chunks: 'all',
-      name: "vendor",
-      filename: "entry/vendor.min.js",
+      name: "modules",
+      filename: "entry/modules.js",
     },
   },
   plugins: [

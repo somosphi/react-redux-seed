@@ -26,12 +26,6 @@ const base = (env) => {
           to: './',
         },
       ]),
-      new HtmlWebpackPlugin({
-        template: './src/html/index.ejs',
-        production: env === 'production',
-        filename: 'index.html',
-        inject: true,
-      }),
     ],
     module: {
       rules: [
