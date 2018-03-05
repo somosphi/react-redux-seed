@@ -41,6 +41,13 @@ const sass = {
 
 const config = {
   devtool: false,
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: "vendor",
+      filename: "entry/vendor.min.js",
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -66,11 +73,6 @@ const config = {
         toplevel: false,
         warnings: false,
       },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      filename: "vendor.min.js",
-      minChunks: module => /node_modules/.test(module.resource)
     }),
   ],
   module: {

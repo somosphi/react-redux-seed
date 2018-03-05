@@ -2,17 +2,18 @@ const path = require('path');
 const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const keys = require('lodash/keys');
 const entry = require('./webpack.entry.js');
 
 const babelrc = fs.readFileSync(path.join(__dirname, '..', '.babelrc')).toString();
 
-module.exports = (env) => {
-  return {
+const base = (env) => {
+  const config = {
     entry,
     output: {
-      filename: 'js/index.js',
+      filename: 'entry/[name].[hash].js',
       path: path.join(__dirname, '..', 'release'),
-      publicPath: '/',
+      // publicPath: '/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
@@ -62,4 +63,19 @@ module.exports = (env) => {
       ],
     },
   };
+
+  const chunks = keys(entry);
+  for (let i in chunks) {
+    config.plugins.push(new HtmlWebpackPlugin({
+      template: './src/html/index.ejs',
+      production: env === 'production',
+      filename: chunks[i] + '.html',
+      chunks: [chunks[i], 'modules'],
+      inject: true,
+    }));
+  }
+
+  return config;
 };
+
+module.exports = base;
