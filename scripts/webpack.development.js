@@ -1,5 +1,26 @@
 const webpack = require('webpack');
-const eslintFormatter = require('eslint-friendly-formatter');
+
+const less = {
+  test: /\.(less|css)$/,
+  use: [{
+    loader: 'style-loader',
+  }, {
+    loader: 'css-loader',
+  }, {
+    loader: 'less-loader',
+  }],
+};
+
+const sass = {
+  test: /\.(sass|scss|css)$/,
+  use: [{
+    loader: 'style-loader',
+  }, {
+    loader: 'css-loader',
+  }, {
+    loader: 'sass-loader',
+  }],
+}
 
 const config = {
   devServer: {
@@ -14,24 +35,8 @@ const config = {
   ],
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'eslint-loader',
-        options: {
-          formatter: eslintFormatter,
-        },
-      }, {
-        test: /\.(less|css)$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }, {
-          loader: 'less-loader',
-        }],
-      },
+      less,
+      // sass,
     ],
   },
 };

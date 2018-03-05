@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Post = ({ postInfo }) => {
   return (
@@ -14,4 +15,5 @@ const Post = ({ postInfo }) => {
 Post.propTypes = {
   postInfo: PropTypes.object.isRequired,
 };
+
 export default Post;

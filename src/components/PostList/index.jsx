@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
-import _ from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import map from 'lodash/map';
 import './style.less';
 
 import Post from './../Post.jsx';
@@ -9,7 +10,7 @@ posts: um array de objetos do tipo {id(number), title(string)}
 const PostList = (({ data }) => {
   let postComponents = [];
   if (data && data.items) {
-    postComponents = _.map(data.items, (post) => {
+    postComponents = map(data.items, (post) => {
       const postInfo = {
         permalink: post.permalink,
         title: post.title,
@@ -36,6 +37,7 @@ const PostList = (({ data }) => {
 PostList.propTypes = {
   data: PropTypes.object,
 };
+
 PostList.defaultProps = {
   data: {},
 };
