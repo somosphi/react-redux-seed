@@ -1,14 +1,16 @@
 const path = require('path');
-const _ = require('lodash');
+const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const entry = require('./webpack.entry.js');
 
+const babelrc = fs.readFileSync(path.join(__dirname, '..', '.babelrc')).toString();
+
 module.exports = (env) => {
-  const config = {
+  return {
     entry,
     output: {
-      filename: 'entry/[name].[hash].js',
+      filename: 'js/index.js',
       path: path.join(__dirname, '..', 'release'),
       publicPath: '/',
     },
@@ -23,6 +25,12 @@ module.exports = (env) => {
           to: './',
         },
       ]),
+      new HtmlWebpackPlugin({
+        template: './src/html/index.ejs',
+        production: env === 'production',
+        filename: 'index.html',
+        inject: true,
+      }),
     ],
     module: {
       rules: [
@@ -31,10 +39,7 @@ module.exports = (env) => {
           exclude: /(node_modules|bower_components)/,
           use: [{
             loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-              presets: ['es2015', 'react'],
-            },
+            options: JSON.parse(babelrc),
           }],
         }, {
           test: /\.(jpg|png|gif)$/,
@@ -57,16 +62,4 @@ module.exports = (env) => {
       ],
     },
   };
-
-  const chunks = _.keys(entry);
-  for (let i = 0; i < chunks.length; i += 1) {
-    config.plugins.push(new HtmlWebpackPlugin({
-      template: './src/html/index.ejs',
-      production: env === 'production',
-      filename: `${chunks[i]}.html`,
-      chunks: [chunks[i], 'modules'],
-      inject: true,
-    }));
-  }
-  return config;
 };
