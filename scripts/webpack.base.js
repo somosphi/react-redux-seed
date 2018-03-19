@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require('path');
 const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -26,6 +27,11 @@ const base = (env) => {
           to: './',
         },
       ]),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify(env),
+        },
+      }),
     ],
     module: {
       rules: [
