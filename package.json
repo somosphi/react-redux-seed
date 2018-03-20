@@ -4,7 +4,7 @@
   "description": "Projeto seed de react redux",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --config webpack.development.js --hot --colors",
+    "start": "webpack-dev-server --mode development --config development.js --hot --colors",
 
     "test": "./node_modules/mocha/bin/mocha src/**/*.spec.js --require ./test/helpers.js --require babel-register --recursive",
     "test:watch": "npm test -- --watch",

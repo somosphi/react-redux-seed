@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from 'config';
+import http from '../common/http';
 
 
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
@@ -41,7 +42,7 @@ export function fetchPosts(subreddit) {
   return (dispatch) => {
     dispatch(requestPosts(subreddit));
 
-    axios.get(`${config.apiEndpoint}/r/${subreddit}.json`)
+    http.get(`/r/${subreddit}.json`)
       .then((response) => {
         dispatch(receivePosts(subreddit, response.data));
       })
