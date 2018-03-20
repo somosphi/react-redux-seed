@@ -9,15 +9,23 @@ const entry = require('./webpack.entry.js');
 const babelrc = fs.readFileSync(path.join(__dirname, '..', '.babelrc')).toString();
 
 const base = (env) => {
+  const envs = ['production', 'homologation', 'test', 'development'];
+  if (envs.indexOf(env) === -1) {
+    throw new Error(`env '${env}' não suportado`);
+  }
+
   const config = {
     entry,
     output: {
-      filename: 'entry/[name].[hash].js',
+      filename: 'js/[name].js',
       path: path.join(__dirname, '..', 'release'),
       // publicPath: '/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
+      alias: {
+        config: path.join(__dirname, '..', 'src', 'config', env === 'development' ? 'test' : env),
+      },
     },
     plugins: [
       new CopyWebpackPlugin([
@@ -29,7 +37,7 @@ const base = (env) => {
       ]),
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': JSON.stringify(env),
+          'NODE_ENV': JSON.stringify(env === 'development' ? 'development' : 'production'),
         },
       }),
     ],
