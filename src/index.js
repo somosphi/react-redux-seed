@@ -1,10 +1,27 @@
 import React from 'react';
-import thunkMiddleware from 'redux-thunk';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers';
-import App from './components/App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
+import rootReducer from './store/reducers';
+import Router from './router';
+import registerServiceWorker from './registerServiceWorker';
+import 'normalize.css';
+import './styles/index.css';
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+/* eslint-disable */
+const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ }) : compose;
+/* eslint-enable */
+const enhancer = composeEnhancers(applyMiddleware(thunkMiddleware));
+const store = createStore(rootReducer, enhancer);
 
-render(<App store={store} />, document.getElementById('app'));
+render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root'),
+);
+registerServiceWorker();
