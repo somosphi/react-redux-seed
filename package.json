@@ -15,9 +15,10 @@
     "styled-components": "^3.4.4"
   },
   "scripts": {
-    "start": "node -r dotenv/config ./node_modules/.bin/react-scripts start dotenv_config_path=development.env",
-    "build:homologation": "node -r dotenv/config ./node_modules/.bin/react-scripts build dotenv_config_path=homologation.env",
-    "build:production": "node -r dotenv/config ./node_modules/.bin/react-scripts build dotenv_config_path=production.env",
+    "start": "react-app-env --env-file=development.env start",
+    "build": "react-app-env --env-file=${BUILD_ENV}.env build",
+    "build:homologation": "BUILD_ENV=homologation npm run build",
+    "build:production": "BUILD_ENV=production npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
