@@ -1,5 +1,3 @@
-[![Coverage Status](https://coveralls.io/repos/github/4alltecnologia/react-redux-seed/badge.svg?branch=master)](https://coveralls.io/github/4alltecnologia/react-redux-seed?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/4alltecnologia/react-redux-seed/badge.svg)](https://snyk.io/test/github/4alltecnologia/react-redux-seed)
-
 # react-redux-seed
 > This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
