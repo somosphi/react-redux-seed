@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.1",
+    "env-cmd": "^10.0.1",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -15,8 +16,8 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "start": "react-app-env --env-file=development.env start",
-    "build": "react-app-env --env-file=${BUILD_ENV}.env build",
+    "start": "env-cmd -f .env.development react-scripts start",
+    "build": "env-cmd -f .env.${BUILD_ENV} react-scripts build",
     "build:homologation": "BUILD_ENV=homologation npm run build",
     "build:production": "BUILD_ENV=production npm run build",
     "test": "react-scripts test --env=jsdom",
